@@ -146,8 +146,27 @@ or in one line
 stop-all.sh
 ```
 
- #### **notes:** If your encountered some problems, bellow maybe helpful:
- 1. About SSH no-key, if you can not start HDFS or YARN baceuse perssion denied
+ ### **Notes:** If your encountered some problems, bellow maybe helpful:
+ 1. About SSH no-key, if you can not start HDFS or YARN baceuse perssion denied, please try
+ ```shell
+ ssh-keygen -t rsa -P '' -f ~/.ssh/id_rsa
+ cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
+ ```
+ 2. If there no ```current``` directory in ```/disk2/xxx/hadoop-2.6.4/tmp/dfs/data/``` or not create DataNode after running ```start-dfs.sh```, there maybe more than one reason. You can check ```/disk2/xxx/hadoop-2.6.4/logs/``` foe more information~~~~
+ - If the VERSION in data and VERSION in name directory is different. You should make them same by coping content one of them to another. This usually happen do ```hadoop namenode -format``` more than one time and do not do right pipele during start and stop HDFS or TARN.
+ - If the port is occupied, you can change related port by editing related xml file. For example in hdfs-site.xml,
+ ```xml
+ <property>
+        	 <name>dfs.datanode.address</name>
+         	 <value>0.0.0.0:50010</value>
+    	</property>
+ ```
+ The configuration maybr different in different version hadoop and the port also maybe different in different version hadoop like 2.6.4 and 3.1.3. You can check [hadoop-website](https://hadoop.apache.org) websit for more details.
+ - Maybe you don't have enough perssion with related directory. You can slove it easily through running
+ ```shell
+ chmod 777 [problem_directory]
+ ```
+ You also can use other method with high security.
  
  
  ### References
@@ -156,4 +175,3 @@ stop-all.sh
  - https://www.jianshu.com/p/0d4a365ef350
  - https://hadoop.apache.org
  - https://www.jianshu.com/p/67cbc4bbfd15
- - 
