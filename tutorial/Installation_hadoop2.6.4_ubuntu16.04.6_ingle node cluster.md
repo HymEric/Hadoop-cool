@@ -129,11 +129,13 @@ start-all.sh
 
 9. Check by run ```jps```, if the output like this then it is successfully, cool!
 ```shell
-32386 NodeManager
-32841 Jps
-32219 ResourceManager
-29549 NameNode
-29759 DataNode
+37284 NameNode
+8422 Jps
+38087 ResourceManager
+37785 SecondaryNameNode
+37497 DataNode
+38251 NodeManager
+
 ```
 
 10. Close HDFS and YARN, you can run 
@@ -153,7 +155,7 @@ stop-all.sh
  cat ~/.ssh/id_rsa.pub >> ~/.ssh/authorized_keys
  ```
  2. If there no ```current``` directory in ```/disk2/xxx/hadoop-2.6.4/tmp/dfs/data/``` or not create DataNode after running ```start-dfs.sh```, there maybe more than one reason. You can check ```/disk2/xxx/hadoop-2.6.4/logs/``` foe more information~~~~
- - If the VERSION in data and VERSION in name directory is different. You should make them same by coping content one of them to another. This usually happen do ```hadoop namenode -format``` more than one time and do not do right pipele during start and stop HDFS or TARN.
+ - If the VERSION in data and VERSION in name directory is different. You should make them same by coping content one of them to another. This usually happen do ```hadoop namenode -format``` more than one time and do not do right pipele during start and stop HDFS or YARN.
  - If the port is occupied, you can change related port by editing related xml file. For example in hdfs-site.xml,
  ```xml
  <property>
