@@ -159,11 +159,11 @@ stop-all.sh
  - If the port is occupied, you can change related port by editing related xml file. For example in hdfs-site.xml,
  ```xml
  <property>
-        	 <name>dfs.datanode.address</name>
-         	 <value>0.0.0.0:50010</value>
-    	</property>
+         <name>dfs.datanode.address</name>
+         <value>0.0.0.0:50010</value>
+ </property>
  ```
- The configuration maybr different in different version hadoop and the port also maybe different in different version hadoop like 2.6.4 and 3.1.3. You can check [hadoop-website](https://hadoop.apache.org) websit for more details.
+ The configuration maybe different in different version hadoop and the port also maybe different in different version hadoop like 2.6.4 and 3.1.3. You can check [hadoop-website](https://hadoop.apache.org) websit for more details.
  - Maybe you don't have enough perssion with related directory. You can slove it easily through running
  ```shell
  chmod 777 [problem_directory]
