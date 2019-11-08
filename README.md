@@ -8,4 +8,4 @@ Hadoop projects including tutorial and sogou 5 million data analysis etc.
 
 
 ## Sogou 5 million data analysis
-[todo] 
+Can refer to: [Hadoop Sogou](https://github.com/zdcourse/Lucifer)
